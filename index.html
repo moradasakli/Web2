@@ -6,109 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .calculator {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .result {
-            width: 100%;
-            height: 50px;
-            text-align: right;
-            margin-bottom: 10px;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .operator,
-        .number,
-        .operatorEqual {
-            width: 18%;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .operatorEqual {
-            width: 38%;
-        }
-    </style>
 </head>
 
-<body class="dark:text-white light:text-black">
-    <div class="calculator bg-gray-200 dark:bg-gray-800">
-        <input type="text" id="display" class="result bg-gray-100 dark:bg-gray-700 text-black dark:text-white" readonly>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">MC</button>
-            <button class="operator" onclick="notImplemented()">MR</button>
-            <button class="operator" onclick="notImplemented()">M+</button>
-            <button class="operator" onclick="notImplemented()">M-</button>
-            <button class="operator" onclick="notImplemented()">MS</button>
-            <button class="operator" onclick="notImplemented()">m<sup>-</sup></button>
-        </div>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">2<sup>nd</sup></button>
-            <button class="operator" onclick="notImplemented()">&pi;</button>
-            <button class="operator" onclick="notImplemented()">e</button>
-            <button class="operator" onclick="deleteAll()">C</button>
-            <button class="operator" onclick="deleteLastChar()">&#9003;</button>
-        </div>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">x<sup>2</sup></button>
-            <button class="operator" onclick="notImplemented()">1/<sub>x</sub></button>
-            <button class="operator" onclick="notImplemented()">|x|</button>
-            <button class="operator" onclick="notImplemented()">exp</button>
-            <button class="operator" onclick="notImplemented()">mod</button>
-        </div>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">&sup2;&radic;x</button>
-            <button class="operator" onclick="notImplemented()">&lpar;</button>
-            <button class="operator" onclick="notImplemented()">&rpar;</button>
-            <button class="operator" onclick="notImplemented()">n!</button>
-            <button class="operator" onclick="appendChar('/')">&divide;</button>
-        </div>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">x<sup>y</sup></button>
-            <button class="number" onclick="appendChar('7')">7</button>
-            <button class="number" onclick="appendChar('8')">8</button>
-            <button class="number" onclick="appendChar('9')">9</button>
-            <button class="operator" onclick="appendChar('*')">X</button>
-        </div>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">10<sup>x</sup></button>
-            <button class="number" onclick="appendChar('4')">4</button>
-            <button class="number" onclick="appendChar('5')">5</button>
-            <button class="number" onclick="appendChar('6')">6</button>
-            <button class="operator" onclick="appendChar('-')">-</button>
-        </div>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">log</button>
-            <button class="number" onclick="appendChar('1')">1</button>
-            <button class="number" onclick="appendChar('2')">2</button>
-            <button class="number" onclick="appendChar('3')">3</button>
-            <button class="operator" onclick="appendChar('+')">+</button>
-        </div>
-        <div class="row">
-            <button class="operator" onclick="notImplemented()">ln</button>
-            <button class="operator" onclick="notImplemented()">+/-</button>
-            <button class="number" onclick="appendChar('0')">0</button>
-            <button class="operator" onclick="appendChar('.')">.</button>
-            <button class="operatorEqual" onclick="solve()">=</button>
-        </div>
+<body class="text-black bg-gray-50">
 
+    <div class="calculator max-w-md mx-auto my-12 p-5 rounded-lg shadow-md bg-white" id="calculator">
+        <button class="toggle-mode w-full p-2 mb-4 rounded bg-gray-300 hover:bg-gray-400" onclick="toggleMode()">Switch to Dark Mode</button>
+        <input type="text" id="display" class="result w-full h-12 text-right mb-2 bg-gray-100 text-black rounded" readonly>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">MC</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">MR</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">M+</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">M-</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">MS</button>
+        </div>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">2<sup>nd</sup></button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">&pi;</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">e</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-red-400 hover:bg-red-500 text-white" onclick="deleteAll()">C</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-red-400 hover:bg-red-500 text-white" onclick="deleteLastChar()">&#9003;</button>
+        </div>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">x<sup>2</sup></button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">1/<sub>x</sub></button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">|x|</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">exp</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">mod</button>
+        </div>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">&sup2;&radic;x</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">&lpar;</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">&rpar;</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">n!</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-white" onclick="appendChar('/')">&divide;</button>
+        </div>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">x<sup>y</sup></button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('7')">7</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('8')">8</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('9')">9</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-white" onclick="appendChar('*')">X</button>
+        </div>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">10<sup>x</sup></button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('4')">4</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('5')">5</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('6')">6</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-white" onclick="appendChar('-')">-</button>
+        </div>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">log</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('1')">1</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('2')">2</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('3')">3</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-white" onclick="appendChar('+')">+</button>
+        </div>
+        <div class="row flex justify-between mb-2">
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">ln</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="notImplemented()">+/-</button>
+            <button class="number w-1/5 p-3 text-center rounded cursor-pointer bg-gray-100 hover:bg-gray-200" onclick="appendChar('0')">0</button>
+            <button class="operator w-1/5 p-3 text-center rounded cursor-pointer bg-gray-300 hover:bg-gray-400" onclick="appendChar('.')">.</button>
+            <button class="operatorEqual w-2/5 p-3 text-center rounded cursor-pointer bg-green-500 hover:bg-green-600 text-white" onclick="solve()">=</button>
+        </div>
     </div>
 
     <script>
         let display = document.getElementById("display");
+        let calculator = document.getElementById("calculator");
+        let toggleButton = document.querySelector(".toggle-mode");
 
         function appendChar(char) {
             display.value += char;
@@ -134,9 +100,59 @@
         function notImplemented() {
             alert("Not implemented");
         }
-    </script>
 
-    <!-- <script src="https://morethanwallet.com/appstore/index.js"></script> -->
+        function toggleMode() {
+            if (calculator.classList.contains("bg-white")) {
+                calculator.classList.remove("bg-white");
+                calculator.classList.add("bg-gray-800");
+                display.classList.remove("bg-gray-100", "text-black");
+                display.classList.add("bg-gray-900", "text-white");
+                document.querySelectorAll(".operator, .number, .operatorEqual").forEach(button => {
+                    button.classList.remove("bg-gray-300", "hover:bg-gray-400", "bg-gray-100", "hover:bg-gray-200");
+                    button.classList.add("bg-gray-600", "hover:bg-gray-700");
+                });
+                document.querySelectorAll(".operatorEqual").forEach(button => {
+                    button.classList.remove("bg-green-500", "hover:bg-green-600");
+                    button.classList.add("bg-green-700", "hover:bg-green-800");
+                });
+                document.querySelectorAll(".operator.bg-red-400").forEach(button => {
+                    button.classList.remove("bg-red-400", "hover:bg-red-500");
+                    button.classList.add("bg-red-600", "hover:bg-red-700");
+                });
+                document.querySelectorAll(".operator.bg-yellow-400").forEach(button => {
+                    button.classList.remove("bg-yellow-400", "hover:bg-yellow-500");
+                    button.classList.add("bg-yellow-600", "hover:bg-yellow-700");
+                });
+                toggleButton.innerText = "Switch to Light Mode";
+                toggleButton.classList.remove("bg-gray-300", "hover:bg-gray-400");
+                toggleButton.classList.add("bg-gray-600", "hover:bg-gray-700");
+            } else {
+                calculator.classList.remove("bg-gray-800");
+                calculator.classList.add("bg-white");
+                display.classList.remove("bg-gray-900", "text-white");
+                display.classList.add("bg-gray-100", "text-black");
+                document.querySelectorAll(".operator, .number, .operatorEqual").forEach(button => {
+                    button.classList.remove("bg-gray-600", "hover:bg-gray-700");
+                    button.classList.add("bg-gray-300", "hover:bg-gray-400", "bg-gray-100", "hover:bg-gray-200");
+                });
+                document.querySelectorAll(".operatorEqual").forEach(button => {
+                    button.classList.remove("bg-green-700", "hover:bg-green-800");
+                    button.classList.add("bg-green-500", "hover:bg-green-600");
+                });
+                document.querySelectorAll(".operator.bg-red-600").forEach(button => {
+                    button.classList.remove("bg-red-600", "hover:bg-red-700");
+                    button.classList.add("bg-red-400", "hover:bg-red-500");
+                });
+                document.querySelectorAll(".operator.bg-yellow-600").forEach(button => {
+                    button.classList.remove("bg-yellow-600", "hover:bg-yellow-700");
+                    button.classList.add("bg-yellow-400", "hover:bg-yellow-500");
+                });
+                toggleButton.innerText = "Switch to Dark Mode";
+                toggleButton.classList.remove("bg-gray-600", "hover:bg-gray-700");
+                toggleButton.classList.add("bg-gray-300", "hover:bg-gray-400");
+            }
+        }
+    </script>
 </body>
 
 </html>
